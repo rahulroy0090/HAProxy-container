@@ -60,3 +60,42 @@ sudo docker run -d --name haproxy \
 http://localhost
 ```
 
+
+
+------------------------------------------------------------------------------------------------------
+
+
+### Pull the Nginx Image:
+
+
+```
+sudo docker pull nginx
+```
+
+
+### Run Backend Containers:
+```
+sudo docker run -d --name backend1 --network mynetwork nginx
+sudo docker run -d --name backend2 --network mynetwork nginx
+
+```
+
+ 
+
+```
+sudo docker run -d --name haproxy \
+  --network mynetwork \
+  -p 80:80 \
+  -v /path/to/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro \
+  haproxy:latest
+```
+
+
+ 
+
+
+
+
+
+
+
